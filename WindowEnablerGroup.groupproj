@@ -6,7 +6,7 @@
         <Projects Include="EnablerTest.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="WindowEnabler2.dproj">
+        <Projects Include="WindowEnabler.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -26,23 +26,23 @@
     <Target Name="EnablerTest:Make">
         <MSBuild Projects="EnablerTest.dproj" Targets="Make"/>
     </Target>
-    <Target Name="WindowEnabler2">
-        <MSBuild Projects="WindowEnabler2.dproj"/>
+    <Target Name="WindowEnabler">
+        <MSBuild Projects="WindowEnabler.dproj"/>
     </Target>
-    <Target Name="WindowEnabler2:Clean">
-        <MSBuild Projects="WindowEnabler2.dproj" Targets="Clean"/>
+    <Target Name="WindowEnabler:Clean">
+        <MSBuild Projects="WindowEnabler.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="WindowEnabler2:Make">
-        <MSBuild Projects="WindowEnabler2.dproj" Targets="Make"/>
+    <Target Name="WindowEnabler:Make">
+        <MSBuild Projects="WindowEnabler.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="EnablerTest;WindowEnabler2"/>
+        <CallTarget Targets="EnablerTest;WindowEnabler"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="EnablerTest:Clean;WindowEnabler2:Clean"/>
+        <CallTarget Targets="EnablerTest:Clean;WindowEnabler:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="EnablerTest:Make;WindowEnabler2:Make"/>
+        <CallTarget Targets="EnablerTest:Make;WindowEnabler:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
