@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{BE223ABE-7948-47C9-A719-9ACEFFA06BE9}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="EnablerTest.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="WindowEnabler2.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="EnablerTest">
+        <MSBuild Projects="EnablerTest.dproj"/>
+    </Target>
+    <Target Name="EnablerTest:Clean">
+        <MSBuild Projects="EnablerTest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="EnablerTest:Make">
+        <MSBuild Projects="EnablerTest.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="WindowEnabler2">
+        <MSBuild Projects="WindowEnabler2.dproj"/>
+    </Target>
+    <Target Name="WindowEnabler2:Clean">
+        <MSBuild Projects="WindowEnabler2.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="WindowEnabler2:Make">
+        <MSBuild Projects="WindowEnabler2.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="EnablerTest;WindowEnabler2"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="EnablerTest:Clean;WindowEnabler2:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="EnablerTest:Make;WindowEnabler2:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
